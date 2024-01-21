@@ -1,6 +1,7 @@
 # CloudVendorCRUD
 A basic Maven based SpringBoot project covering:
-- CRUD operations with MySQL,
+- CRUD operations
+- Data persistence with MySQL,
 - Unit Testing,
 - Exception and Response Handling,
 - Logging,
