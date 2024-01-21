@@ -11,9 +11,10 @@ public class CloudVendorExceptionHandler {
     @ExceptionHandler(value = {CloudVendorNotFoundException.class})
     public ResponseEntity<Object> handleCloudVendorNotFoundException(CloudVendorNotFoundException cloudVendorNotFoundException){
         CloudVendorException cloudVendorException = new CloudVendorException(
-                cloudVendorNotFoundException.getMessage(),
-                cloudVendorNotFoundException.getCause(),
+                null,
                 HttpStatus.NOT_FOUND
+                // cloudVendorNotFoundException.getMessage()
+                // cloudVendorNotFoundException.getCause()
         );
 
         return new ResponseEntity<>(cloudVendorException, HttpStatus.NOT_FOUND);

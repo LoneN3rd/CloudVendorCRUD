@@ -1,13 +1,17 @@
 package co.mercy.cloudvendorcruddemo.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity(name = "cloud_vendors_info")
 @Table(name = "cloud_vendors_info")
+@ApiModel(description = "This table holds cloud vendors and their information")
 public class CloudVendor {
     @Id
+    @ApiModelProperty(notes = "This is a unique identifier for a cloud vendor")
     String VendorId;
     String vendorName;
     String VendorAddress;

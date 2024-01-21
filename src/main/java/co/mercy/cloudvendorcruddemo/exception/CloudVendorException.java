@@ -3,25 +3,19 @@ package co.mercy.cloudvendorcruddemo.exception;
 import org.springframework.http.HttpStatus;
 
 public class CloudVendorException {
-    private final String message;
-    private final Throwable cause;
+    private final Object data;
     private final HttpStatus httpStatus;
 
-    public CloudVendorException(String message, Throwable throwable, HttpStatus httpStatus) {
-        this.message = message;
-        this.cause = throwable;
+    public CloudVendorException(Object data, HttpStatus httpStatus) {
+        this.data = data;
         this.httpStatus = httpStatus;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public Throwable getCause() {
-        return cause;
     }
 
     public HttpStatus getHttpStatus() {
         return httpStatus;
+    }
+
+    public Object getData() {
+        return data;
     }
 }

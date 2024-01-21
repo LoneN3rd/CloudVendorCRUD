@@ -11,3 +11,24 @@ spring:
 #    properties:
 #      hibernate:
 #        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  mvc:
+    path-match:
+      matching-strategy: ANT_PATH_MATCHER
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "caches"
+      base-path: "/cloud-vendor-actuator"
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    co.mercy.cloudvendorcruddemo.controller: TRACE
+
+dummyService:
+  port: 8081
+  address: 127.0.0.1

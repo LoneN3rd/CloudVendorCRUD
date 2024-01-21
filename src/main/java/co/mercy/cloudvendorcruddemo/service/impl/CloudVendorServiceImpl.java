@@ -6,6 +6,7 @@ import co.mercy.cloudvendorcruddemo.repository.CloudVendorRepository;
 import co.mercy.cloudvendorcruddemo.service.CloudVendorService;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,7 +38,7 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     @Override
     public CloudVendor getCloudVendor(String cloudVendorId) {
         Optional<CloudVendor> vendor = cloudVendorRepository.findById(cloudVendorId);
-        if(cloudVendorRepository.findById(cloudVendorId).isEmpty())
+        if(vendor.isEmpty())
             throw new CloudVendorNotFoundException("Requested vendor not found");
         return vendor.get();
     }
@@ -53,11 +54,17 @@ public class CloudVendorServiceImpl implements CloudVendorService {
 
     @Override
     public List<CloudVendor> getVendorByVendorName(String vendorName) {
-        return cloudVendorRepository.findByVendorName(vendorName);
+        List<CloudVendor> vendors = cloudVendorRepository.findByVendorName(vendorName);
+        if(vendors.isEmpty())
+            throw new CloudVendorNotFoundException("No vendor(s) found");
+        return vendors;
     }
 
     @Override
     public List<CloudVendor> getVendorByAddress(String vendorAddress) {
-        return cloudVendorRepository.findVendorByAddress(vendorAddress);
+        List<CloudVendor> vendors = cloudVendorRepository.findVendorByAddress(vendorAddress);
+        if(vendors.isEmpty())
+            throw new CloudVendorNotFoundException("No vendor(s) found");
+        return vendors;
     }
 }

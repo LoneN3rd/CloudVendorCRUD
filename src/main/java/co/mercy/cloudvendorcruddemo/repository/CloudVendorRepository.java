@@ -12,8 +12,8 @@ public interface CloudVendorRepository extends JpaRepository<CloudVendor, String
     List<CloudVendor> findByVendorName(String vendorName);
 
     // JPQL
-     @Query("select vi from cloud_vendors_info vi where vi.VendorAddress=?1")
-     List<CloudVendor> findVendorByAddress(String vendorAddress);
+    @Query("select vi from cloud_vendors_info vi where vi.VendorAddress = ?1")
+    List<CloudVendor> findVendorByAddress(String vendorAddress);
 
     // Native Query
     // @Query(value="select * from cloud_vendors_info vi where vi.VendorAddress=?1", nativeQuery = true)

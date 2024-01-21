@@ -7,12 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ResponseHandler {
-    public static ResponseEntity<Object> responseBuilder(String message, HttpStatus httpStatus, Object result) {
+    public static ResponseEntity<Object> responseBuilder(HttpStatus httpStatus, Object result) {
         // construct custom response
         Map<String, Object> response = new HashMap<>();
-        response.put("message", message);
-        response.put("httpStatus", httpStatus);
         response.put("data", result);
+        response.put("httpStatus", httpStatus);
 
         return new ResponseEntity<>(response, httpStatus);
     }
